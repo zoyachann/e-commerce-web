@@ -191,16 +191,15 @@ export default function MyAppBar() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="error">
+            <IconButton size="large"  color="inherit">
+              <Badge color="error">
                 <ShoppingCartIcon  onClick={toggleDrawer(true)}/>
               </Badge>
             </IconButton>
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
-              color="inherit"
-            >
+              color="inherit" >
               <Badge badgeContent={17} color="error">
                 <NotificationsIcon />
               </Badge>

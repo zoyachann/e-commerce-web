@@ -2,7 +2,9 @@ import { Box, CircularProgress, Grid, Typography, Button, Rating, Dialog, Dialog
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import ShareIcon from '@mui/icons-material/Share';
 const ProductDetails = () => {
   const [productDetails, setProductDetails] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -43,7 +45,7 @@ const ProductDetails = () => {
           <CircularProgress color="inherit" />
         </Box>
       ) : (
-        <Box display="flex" justifyContent="center" p={3} mt={5}> 
+        <Box display="flex" justifyContent="center" p={3} mt={5}>
           <Grid container spacing={3} sx={{ maxWidth: '800px', boxShadow: 3, borderRadius: 2, padding: 2, backgroundColor: 'white' }}>
             <Grid item xs={12} sm={6}>
               <Box display="flex" justifyContent="center">
@@ -80,6 +82,12 @@ const ProductDetails = () => {
               <Typography variant="body1" color="textSecondary">
                 {productDetails.description}
               </Typography>
+              <Box className=" d-flex gap-5 mt-3 ">
+                <Button variant="outlined"><FavoriteBorderIcon /></Button>
+                <Button variant="outlined"><AddShoppingCartIcon /></Button>
+                <Button variant="outlined"><ShareIcon /></Button>
+              </Box>
+             
             </Grid>
           </Grid>
 
