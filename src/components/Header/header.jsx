@@ -15,7 +15,10 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-// import CartDrawer from './drawer';
+import CartDrawer from '../Drawer';
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -56,12 +59,18 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function MyAppBar() {  
+export default function MyAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
+  
+  const count = useSelector((state) => state.counter);
 
-  const toggleDrawer = (newOpen) => () => {
+  console.log(count, 'count');
+
+
+
+  const toggleCartDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
 
@@ -126,8 +135,8 @@ export default function MyAppBar() {
     >
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <ShoppingCartIcon  onClick={toggleDrawer(true)}/>
+          <Badge badgeContent={count?.value} color="error">
+            <ShoppingCartIcon  />
           </Badge>
         </IconButton>
         <p>Messages</p>
@@ -191,9 +200,9 @@ export default function MyAppBar() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large"  color="inherit">
-              <Badge color="error">
-                <ShoppingCartIcon  onClick={toggleDrawer(true)}/>
+            <IconButton size="large" color="inherit">
+              <Badge badgeContent={count?.value} color="error">
+                <ShoppingCartIcon onClick={toggleCartDrawer(true)} />
               </Badge>
             </IconButton>
             <IconButton
@@ -232,8 +241,8 @@ export default function MyAppBar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-      
-      <cartList open={open} toggleDrawer={toggleDrawer} />
+
+      <CartDrawer open={open} toggleCartDrawer={toggleCartDrawer} />
     </Box>
   );
 }
