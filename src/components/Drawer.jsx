@@ -16,10 +16,10 @@ const CartDrawer = (props) => {
       <Drawer open={open} onClose={toggleCartDrawer(false)}>
         <Box sx={{ width: 450 }} role="presentation"
         >
-          <Typography  variant="h5" className="mb-5 text-center mt-3">Cart Items</Typography>
+          <Typography  variant="h5" className="mb-5 text-center mt-3 border-bottom pb-3">Cart Items</Typography>
           {items?.map((item) => {
             return (
-              <Box className="d-flex justify-content-between align-items-center mt-4">
+              <Box className="d-flex justify-content-between align-items-center mt-4 border-bottom pb-4 mx-3">
                 <div>
                   <img width="40px" src={item?.image} alt="" />
                   <span> {item?.title?.length >= 15
@@ -27,11 +27,11 @@ const CartDrawer = (props) => {
                     : item?.title}</span>
                 </div>
                 <ButtonGroup className="border" size="25" variant="text" aria-label="Basic button group">
-                  <Button ><RemoveIcon onClick={() => dispatch(decreaseQuantity(item))} /></Button>
+                  <Button ><RemoveIcon sx={{ width: 15 }} onClick={() => dispatch(decreaseQuantity(item))} /></Button>
                   <Button>{item?.quantity}</Button>
-                  <Button><AddIcon onClick={() => dispatch(increaseQuantity(item))} /></Button>
+                  <Button><AddIcon sx={{ width: 15 }} onClick={() => dispatch(increaseQuantity(item))} /></Button>
                 </ButtonGroup>
-                <span>{item?.price}</span>
+                <span className="fw-bold">{item?.price}</span>
               </Box>
             );
           })}
@@ -40,4 +40,4 @@ const CartDrawer = (props) => {
     </div>
   );
 };
-export default CartDrawer;
+export default CartDrawer;       
