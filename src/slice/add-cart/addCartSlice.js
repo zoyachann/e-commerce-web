@@ -15,6 +15,6 @@ export const counterSlice = createSlice({
 
 });
 
-export const { addToCart } = counterSlice.actions
+export const { addToCart } = counterSlice.actions;
 
-export default counterSlice.reducer
+export default counterSlice.reducer;

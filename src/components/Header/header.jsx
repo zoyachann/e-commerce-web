@@ -207,9 +207,9 @@ export default function MyAppBar() {
             </IconButton>
             <IconButton
               size="large"
-              aria-label="show 17 new notifications"
+              aria-label="show 20 new notifications"
               color="inherit" >
-              <Badge badgeContent={17} color="error">
+              <Badge badgeContent={20} color="error">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
